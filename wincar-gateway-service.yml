@@ -86,17 +86,6 @@ spring:
         - StripPrefix=1
         uri: lb://wincar-transverse-service
      
-# the gateway is a Eureka client but is not registered as a Eureka instance
-eureka:
-  instance:
-    hostname: localhost
-  client:
-    registerWithEureka: true
-    service-url:
-      defaultZone: http://${admin-registry.user}:${admin-registry.password}@localhost:8761/eureka/
-    healthcheck:
-      enabled: true
-
 # port server
 server:
   port: 9092
