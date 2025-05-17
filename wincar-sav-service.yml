@@ -1,4 +1,33 @@
-sav:
-  params:
-    x: 01
-    y: 01
+spring:
+  application:
+    name: wincar-sav-service
+
+  config:
+    import: optional:configserver:http://localhost:9999
+
+  cloud:
+    config:
+      request-connect-timeout: 2000
+      request-read-timeout: 2000
+      fail-fast: false
+
+  datasource:
+    url: jdbc:mariadb://localhost:3307/wincar_sav_db
+    username: root
+    password: 
+    driver-class-name: org.mariadb.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MariaDBDialect
+
+logging:
+  level:
+    org.springframework.cloud.config: WARN
+
+server:
+  port: 8082
